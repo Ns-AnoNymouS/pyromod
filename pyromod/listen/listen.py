@@ -24,7 +24,6 @@ import pyrogram
 
 from ..utils import patch, patchable
 
-loop = asyncio.get_event_loop()
     
 class ListenerCanceled(Exception):
     pass
@@ -45,7 +44,7 @@ class Client():
             chat = await self.get_chat(chat_id)
             chat_id = chat.id
         
-        future = loop.create_future()
+        future = self.loop.create_future()
         future.add_done_callback(
             functools.partial(self.clear_listener, chat_id)
         )
