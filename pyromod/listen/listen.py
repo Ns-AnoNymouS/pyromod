@@ -193,7 +193,7 @@ class MessageHandler:
     @patchable
     async def check(self, client, message):
         listener = client.match_listener(
-            (message.chat.id, message.from_user.id if message.from_user else None, message.id),
+            (message.chat.id, message.from_user.id if message.from_user else message.chat.id, message.id),
             ListenerTypes.MESSAGE,
         )[0]
 
