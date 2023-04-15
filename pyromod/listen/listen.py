@@ -24,7 +24,7 @@ import pyrogram
 from enum import Enum
 from ..utils import patch, patchable, PyromodConfig
 
-loop = asyncio.get_event_loop()
+loop = pyrogram.client.Client.loop
 
 
 class ListenerStopped(Exception):
