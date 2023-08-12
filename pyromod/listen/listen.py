@@ -217,7 +217,7 @@ class MessageHandler:
     async def resolve_future(self, client, message, *args):
         listener_type = ListenerTypes.MESSAGE
         listener, identifier = client.match_listener(
-            (message.chat.id, message.from_user.id, message.id),
+            (message.chat.id, message.from_user.id if message.from_user else message.chat.id, message.id),
             listener_type,
         )
         listener_does_match = False
